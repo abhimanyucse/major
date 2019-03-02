@@ -110,9 +110,9 @@
 
 								});
 							</script>
-							<div id="OR" class="hidden-xs">OR</div>
+							<!-- <div id="OR" class="hidden-xs">OR</div> -->
 						</div>
-						<div class="col-md-4 modal_body_right modal_body_right1">
+						<!-- <div class="col-md-4 modal_body_right modal_body_right1">
 							<div class="row text-center sign-with">
 								<div class="col-md-12">
 									<h3 class="other-nw">Sign in with</h3>
@@ -126,7 +126,7 @@
 									</ul>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

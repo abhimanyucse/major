@@ -84,8 +84,11 @@ include('login.php');
 						<!-- Mega Menu -->
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-							<ul class="dropdown-menu multi-column columns-3">
-								<div class="row">
+							<ul class="dropdown-menu">
+								<li><a href="#">Games</a></li>
+								<li><a href="#">Books</a></li>
+								<li><a href="#">Calenders</a></li>
+								<!-- <div class="row">
 									<div class="col-sm-3">
 										<ul class="multi-column-dropdown">
 											<h6>Mobiles</h6>
@@ -120,16 +123,16 @@ include('login.php');
 										</div>
 									</div>
 									<div class="clearfix"></div>
-								</div>
+								</div> -->
 							</ul>
 						</li>
 						<li><a href="about.php">About Us</a></li> 
-						<li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
+						<!-- <li class="w3pages"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="icons.html">Web Icons</a></li>
 								<li><a href="codes.html">Short Codes</a></li>     
 							</ul>
-						</li>  
+						</li>   -->
 						<li><a href="mail.php">Mail Us</a></li>
 					</ul>
 				</div>
@@ -1115,7 +1118,7 @@ include('login.php');
 	</div>
 	<!-- //banner-bottom1 --> 
 	<!-- special-deals -->
-	<div class="special-deals">
+	<!-- <div class="special-deals">
 		<div class="container">
 			<h2>Special Deals</h2>
 			<div class="w3agile_special_deals_grids">
@@ -1181,10 +1184,10 @@ include('login.php');
 				<div class="clearfix"> </div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- //special-deals -->
 	<!-- new-products -->
-	<div class="new-products">
+	<!-- <div class="new-products">
 		<div class="container">
 			<h3>New Products</h3>
 			<div class="agileinfo_new_products_grids">
@@ -1307,10 +1310,10 @@ include('login.php');
 				<div class="clearfix"> </div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- //new-products -->
 	<!-- top-brands -->
-	<div class="top-brands">
+	<!-- <div class="top-brands">
 		<div class="container">
 			<h3>Top Brands</h3>
 			<div class="sliderfig">
@@ -1361,7 +1364,7 @@ include('login.php');
 			</script>
 			<script type="text/javascript" src="js/jquery.flexisel.js"></script>
 		</div>
-	</div>
+	</div> -->
 	<!-- //top-brands --> 
 	<!-- newsletter -->
 	<div class="newsletter">
