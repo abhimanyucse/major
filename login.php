@@ -7,28 +7,24 @@
 									<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 										<div class="facts">
 											<div class="register">
-												<form action="#" method="post">
-													<input name="Email" placeholder="Email Address" type="text" required>
-													<input name="Password" placeholder="Password" type="password" required>
+													<input name="Email" id="email_l" placeholder="Email Address" type="text" required>
+													<input name="Password" id="pass_l" placeholder="Password" type="password" required>
 													<div class="sign-up">
-														<input type="submit" value="Sign in"/>
+														<input id="login" type="submit" value="Sign in"/>
 													</div>
-												</form>
 											</div>
 										</div>
 									</div>
 									<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 										<div class="facts">
 											<div class="register">
-												<form action="#" method="post">
-													<input placeholder="Name" name="Name" type="text" required>
-													<input placeholder="Email Address" name="Email" type="email" required>
-													<input placeholder="Password" name="Password" type="password" required>
-													<input placeholder="Confirm Password" name="Password" type="password" required>
+													<input placeholder="Name" name="Name" id="name_r" type="text" required>
+													<input placeholder="Email Address" id="email_r" name="Email" type="email" required>
+													<input placeholder="Password" id="pass_r" name="Password" type="password" required>
+													<input placeholder="Confirm Password" id="cpass_r" name="Password" type="password" required>
 													<div class="sign-up">
-														<input type="submit" value="Create Account"/>
+														<input type="submit" id="register" value="Create Account"/>
 													</div>
-												</form>
 											</div>
 										</div>
 									</div>
@@ -42,6 +38,76 @@
 										width: 'auto', //auto or any width like 600px
 										fit: true   // 100% fit in a container
 									});
+									$("#register").click(function(){
+										 var name_r=$("#name_r").val();
+										 var email_r=$("#email_r").val();
+										 var pass_r=$("#pass_r").val();										 
+										 var cpass_r=$("#cpass_r").val();
+										 var stri="";	
+										 var data="name="+name+"&email="+email_r+"&pass="+pass_r+"&cpass="+cpass;
+										 if(name_r==""){
+											 stri="Name ";
+											 }
+											 if(email_r==""){
+												 stri+="Email ";
+												 }
+												 if(pass_r==""){
+													 stri+="Password ";
+													 }
+													 if(cpass_r==""){
+														 stri+="Confirm Password ";
+														 }
+														 if(stri.length!=0)
+														 alert(stri+"Empty");
+														 else{
+														 $.ajax({
+															 url: "customer_registered.php",
+															 type:'POST',
+															 data:data,
+															 success: function(mess){
+																 if(mess=="Success"){
+																	 alert("Registration Successful");
+																	 }
+																	 else{
+																		 alert(mess);
+																		 }
+																 }
+															 });									 
+														 }
+										});
+									$("#login").click(function(){
+										 var email_l=$("#email_l").val();
+										 var pass_l=$("#pass_l").val();										 
+										 var stri="";	
+										 var data="email="+email_l+"&pass="+pass_l;
+										 	 if(email_l==""){
+												 stri+="Email ";
+												 }
+												 if(pass_l==""){
+													 stri+="Password ";
+													 }
+													 if(cpass_r==""){
+														 stri+="Confirm Password ";
+														 }
+														 if(stri.length!=0)
+														 alert(stri+"Empty");
+														 else{
+														 $.ajax({
+															 url: "login_check.php",
+															 type:'POST',
+															 data:data,
+															 success: function(mess){
+																 if(mess=="Success"){
+																	 alert("login Successful");
+																	 }
+																	 else{
+																		 alert(mess);
+																		 }
+																 }
+															 });									 
+														 }
+										});
+
 								});
 							</script>
 							<div id="OR" class="hidden-xs">OR</div>

@@ -158,13 +158,13 @@ include('login.php');
 			<div class="agile_mail_grids">
 				<div class="col-md-5 contact-left">
 					<h4>Address</h4>
-					<p>est eligendi optio cumque nihil impedit quo minus id quod maxime
-						<span>26 56D Rescue,US</span></p>
+					<p>Jaipur Engineering College And resaerch Centre<br>
+						<span>Sitapura Industrial area Jaipur, Rajasthan</span></p>
 					<ul>
-						<li>Free Phone :+1 078 4589 2456</li>
-						<li>Telephone :+1 078 4589 2456</li>
-						<li>Fax :+1 078 4589 2456</li>
-						<li><a href="mailto:info@example.com">info@example.com</a></li>
+						<li>Free Phone :+91 </li>
+						<li>Telephone :+91</li>
+						<li>Fax :+91</li>
+						<li><a href="mailto:info@example.com">info@jecrc.ac.in</a></li>
 					</ul>
 				</div>
 				<div class="col-md-7 contact-left">
