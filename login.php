@@ -1,3 +1,15 @@
+	<div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
+		aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Don't Wait, Login now!</h4>
+				</div>
+				<div class="modal-body modal-body-sub">
+					<div class="row">
+						<div class="col-md-8 modal_body_left modal_body_left1" >
 							<div class="sap_tabs">
 								<div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
 									<ul>
@@ -30,7 +42,7 @@
 									</div>
 								</div>
 							</div>
-                            							<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+                            <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 							<script type="text/javascript">
 								$(document).ready(function () {
 									$('#horizontalTab').easyResponsiveTabs({
@@ -110,7 +122,6 @@
 
 								});
 							</script>
-							<!-- <div id="OR" class="hidden-xs">OR</div> -->
 						</div>
 						<!-- <div class="col-md-4 modal_body_right modal_body_right1">
 							<div class="row text-center sign-with">
