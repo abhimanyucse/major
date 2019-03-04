@@ -47,6 +47,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 	<!-- header modal -->
 <?php
+include('connect.php');
 include('login.php');
 ?>
 	<!-- //header -->
@@ -147,22 +148,28 @@ include('login.php');
 
 			<div class="agile_mail_grids">
 				<div class="mcol-md-7 contact-left" >
-					<form action="#" method="post">
-						<input type="text" name="Name" placeholder="Product Name" required><br>
+					<form action="added_product.php"  method="post" enctype="multipart/form-data">
+						<input type="text" name="name" placeholder="Product Name" required><br>
                         <br><br>
-						 <select style="width:32.63%;" name="Seller">
+						 <select style="width:32.63%;" name="seller">
                          <option value="x">SELLER</option>
-						  <option value="JECRC">JECRC</option>
-						  <option value="Spiritual">Spiritual</option>
-						</select> 
+<?php
+	$se=mysql_query("select * from seller");
+	while($data=mysql_fetch_array($se)){
+?>
+                         <option value="<?php echo $data['mid'];?>"><?php echo $data['organization'];?></option>
+
+<?php		
+	}					
+?>						</select> 
                         <br><br>
-						<input style="width:32.63%;"  type="number" name="Price" placeholder="Price" required><br>
+						<input style="width:32.63%;"  type="number" name="price" placeholder="Price" required><br>
                         <br>
-                        <input style="width:32.63%;"  type="number" name="Quantity" placeholder="Quantity" required><br>
+                        <input style="width:32.63%;"  type="number" name="quantity" placeholder="Quantity" required><br>
                         <br>
-						<input style="width:32.63%;" type="number" name="Discount" placeholder="Discount in %" required><br>
+						<input style="width:32.63%;" type="number" name="discount" placeholder="Discount in %" required><br>
                         <br>
-                        <input type="file" id="files" class="hidden"/>
+                        <input type="file" name="image" id="files" class="hidden"/>
 						<label for="files">Add Photos Of the Product</label>
                         <br><br>
 						<input type="submit" value="Submit" >

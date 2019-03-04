@@ -47,6 +47,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 	<!-- header modal -->
 <?php
+session_start();
+if(isset($_SESSION['type'])&&$_SESSION['type']=='A'){}
+else{
+	//	header("location:index.php");
+	}
 include('login.php');
 ?>
 	<!-- //header -->
@@ -147,19 +152,43 @@ include('login.php');
 
 			<div class="agile_mail_grids">
 				<div class="mcol-md-7 contact-left" >
-					<form action="#" method="post">
-						<input type="text" name="Name" placeholder="Your Name" required><br>
+						<input type="text" name="Name" id="name" placeholder="Your Name" required><br>
                         <br>
-						<input type="text" name="Organization" placeholder="Organization" required><br>
+						<input type="text" id="org" name="Organization" placeholder="Organization" required><br>
                         <br>
-                        <textarea name="Address" placeholder="Address" style="width:32.63%;min-height:20%;max-height:25%;" required></textarea><br>
-						<input style="margin:0 0 0" type="email" name="Email" placeholder="Your Email" required><br>
+                        <textarea name="Address" id="addr" placeholder="Address" style="width:32.63%;min-height:20%;max-height:25%;" required></textarea><br>
+						<input style="margin:0 0 0" id="email" type="email" name="Email" placeholder="Your Email" required><br>
                         <br>
-						<input style="width:32.63%;" type="number" name="Phone" placeholder="Phone No." required><br>
+						<input style="width:32.63%;" id="phone" type="number" name="Phone" placeholder="Phone No." required><br>
                         <br>
-						<input type="submit" value="Submit" >
-					</form>
+						<input type="submit" value="Submit" id="reg">
 				</div>
+<script>
+    $(document).ready(function(){
+	$("#reg").click(function(){
+		var name=$("#name").val();
+		var org=$("#org").val();
+		var email=$("#email").val();
+		var phone=$("#phone").val();
+		var addr=$("#addr").val();
+		var my="name="+name+"&org="+org+"&email="+email+"&phone="+phone+"&addr="+addr;
+						   if(name==""||org==""||email==""||phone==""||addr==""){
+							   alert("mandatory field empty");
+							   return false;
+							   }
+						   else{
+						     $.ajax({
+				                    url:"seller_registered.php",
+				                    data:my,
+				                    type:'post',
+				                    success: function(mess){
+									alert(mess);
+					                   }
+				                    });
+						   }
+		});
+		});
+                    </script>
 				<div class="clearfix"> </div>
 			</div>
 
