@@ -1,5 +1,4 @@
-
-<div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
+	<div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
 		aria-hidden="true">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
@@ -57,63 +56,36 @@
 										 var pass_r=$("#pass_r").val();										 
 										 var cpass_r=$("#cpass_r").val();
 										 var stri="";	
-										 var data = {
-											name: name_r,
-											email: email_r,
-											pass: pass_r
-										 }
-										//  var data="name="+name+"&email="+email_r+"&pass="+pass_r+"&cpass="+cpass;
-										//  if(name_r==""){
-										// 	 stri="Name ";
-										// 	 }
-										// 	 if(email_r==""){
-										// 		 stri+="Email ";
-										// 		 }
-										// 		 if(pass_r==""){
-										// 			 stri+="Password ";
-										// 			 }
-										// 			 if(cpass_r==""){
-										// 				 stri+="Confirm Password ";
-										// 				 }
-										// 				 if(stri.length!=0)
-										// 				 alert(stri+"Empty");
-										// 				 else{
-										// 				 $.ajax({
-										// 					 url: "customer_registered.php",
-										// 					 type:'POST',
-										// 					 data:data,
-										// 					 success: function(mess){
-										// 						 if(mess=="Success"){
-										// 							 alert("Registration Successful");
-										// 							 }
-										// 							 else{
-										// 								 alert(mess);
-										// 								 }
-										// 						 }
-										// 					 });									 
-										// 				 }
-										if(name_r == "" || email_r == "" || pass_r == ""){
-											stri = "All fields are mandatory";
-										}
-										if(pass_r !== cpass_r){
-											stri = "Passwords do not match";
-										}
-										if(stri !== ""){
-											alert(stri)
-										}else{
-											$.ajax({
-												url: "customer_registered.php",
-												type: "POST",
-												data: data,
-												success: function(data){
-													if(stri == "") {
-														$("#myModal88").modal("hide");
-													}else{
-														alert(data)
-													}
-												}
-											})
-										}
+										 var data="name="+name+"&email="+email_r+"&pass="+pass_r+"&cpass="+cpass;
+										 if(name_r==""){
+											 stri="Name ";
+											 }
+											 if(email_r==""){
+												 stri+="Email ";
+												 }
+												 if(pass_r==""){
+													 stri+="Password ";
+													 }
+													 if(cpass_r==""){
+														 stri+="Confirm Password ";
+														 }
+														 if(stri.length!=0)
+														 alert(stri+"Empty");
+														 else{
+														 $.ajax({
+															 url: "customer_registered.php",
+															 type:'POST',
+															 data:data,
+															 success: function(mess){
+																 if(mess=="Success"){
+																	 alert("Registration Successful");
+																	 }
+																	 else{
+																		 alert(mess);
+																		 }
+																 }
+															 });									 
+														 }
 										});
 									$("#login").click(function(){
 										 var email_l=$("#email_l").val();

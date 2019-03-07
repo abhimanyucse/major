@@ -5,6 +5,7 @@ $price=$_POST['price'];
 $quan=$_POST['quantity'];
 $seller=$_POST['seller'];
 $discount=$_POST['discount'];
+$category=$_POST["Category"];
 $allowedExts = array("gif", "jpeg", "jpg", "png");
 $temp = explode(".", $_FILES["image"]["name"]);
 $extension = end($temp);
@@ -30,7 +31,7 @@ if ((($_FILES["image"]["type"] == "image/gif")
 	  
     else
       {
-	  	$insert=mysql_query("insert into products set name='$name',price='$price',quantity='$quan',seller='$seller',discount='$discount'") or die("cannot insert");
+	  	$insert=mysql_query("insert into products set name='$name',price='$price',quantity='$quan',seller='$seller',discount='$discount',category='$category'") or die("cannot insert");
 		$pid=mysql_insert_id();
 		$photo=$pid.".".$extension;
 		$_FILES["image"]["name"]=$photo;

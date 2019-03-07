@@ -163,6 +163,12 @@ include('login.php');
 	}					
 ?>						</select> 
                         <br><br>
+                         <select style="width:32.63%;" name="Category">
+                         <option value="game">Game</option>
+						 <option value="books">Books</option>
+						 <option value="Calender">Calender</option>
+                         </select>
+                         <br><br>
 						<input style="width:32.63%;"  type="number" name="price" placeholder="Price" required><br>
                         <br>
                         <input style="width:32.63%;"  type="number" name="quantity" placeholder="Quantity" required><br>
