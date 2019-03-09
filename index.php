@@ -216,156 +216,76 @@ include('login.php');
 						</div>
 						<div role="tabpanel" class="tab-pane fade" id="audio" aria-labelledby="audio-tab">
 							<div class="agile_ecommerce_tabs">
+                            <?php
+                             $se=mysql_query("select * from products where category='books' order by pid desc limit 3");
+							 while($info=mysql_fetch_array($se)){		
+							?>
 								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<img src="images/8.jpg" alt=" " class="img-responsive" />
+									<div class="hs-wrapper" style="display:flex;justify-content:center;align-items:center">
+                                    
+										<img src="products/<?php echo $info['photo'];?>" alt=" " class="img-responsive" />
 										
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
-													<a href="#" data-toggle="modal" data-target="#myModal1"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+													<a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
 												</li>
 											</ul>
 										</div>
-									</div>
-									<h5><a href="single.html">Speakers</a></h5>
-										<p><span>$320</span> <i class="item_price">$250</i></p>
+									</div> 
+									<h5><a href="single.html"><?php echo $info["name"];?></a></h5>
 									<div class="simpleCart_shelfItem">
+										<p><span>$<?php echo $info["price"];?></span> <i class="item_price">$<?php echo $info["price"];?></i></p>
 										<form action="#" method="post">
 											<input type="hidden" name="cmd" value="_cart" />
 											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="Speakers" /> 
-											<input type="hidden" name="amount" value="250.00" />   
+											<input type="hidden" name="w3ls_item" value="<?php echo $info["name"];?>" /> 
+											<input type="hidden" name="amount" value="<?php echo $info["price"];?>" />   
 											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
+										</form>  
 									</div>
 								</div>
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<img src="products/9.jpg" alt=" " class="img-responsive" />
-										
-										<div class="w3_hs_bottom">
-											<ul>
-												<li>
-													<a href="#" data-toggle="modal" data-target="#myModal1"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<h5><a href="single.html">Headphones</a></h5>
-									<div class="simpleCart_shelfItem">
-										<p><span>$180</span> <i class="item_price">$150</i></p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="Headphones" /> 
-											<input type="hidden" name="amount" value="150.00" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-								</div>
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-									
-										<img src="images/9.jpg" alt=" " class="img-responsive" />
-										<div class="w3_hs_bottom">
-											<ul>
-												<li>
-													<a href="#" data-toggle="modal" data-target="#myModal1"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<h5><a href="single.html">Audio Player</a></h5>
-									<div class="simpleCart_shelfItem">
-										<p><span>$220</span> <i class="item_price">$180</i></p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="Audio Player" /> 
-											<input type="hidden" name="amount" value="180.00"/>   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-								</div>
+                                <?php
+									}
+								?>
 								<div class="clearfix"> </div>
 							</div>
 						</div>
 						<div role="tabpanel" class="tab-pane fade" id="video" aria-labelledby="video-tab">
 							<div class="agile_ecommerce_tabs">
+								<?php
+                             $se=mysql_query("select * from products where category='calender' order by pid desc limit 3");
+							 while($info=mysql_fetch_array($se)){		
+							?>
 								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<img src="images/11.jpg" alt=" " class="img-responsive" />
+									<div class="hs-wrapper" style="display:flex;justify-content:center;align-items:center">
+                                    
+										<img src="products/<?php echo $info['photo'];?>" alt=" " class="img-responsive" />
 										
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
-													<a href="#" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+													<a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
 												</li>
 											</ul>
 										</div>
-									</div>
-									<h5><a href="single.html">Laptop</a></h5>
+									</div> 
+									<h5><a href="single.html"><?php echo $info["name"];?></a></h5>
 									<div class="simpleCart_shelfItem">
-										<p><span>$880</span> <i class="item_price">$850</i></p>
+										<p><span>$<?php echo $info["price"];?></span> <i class="item_price">$<?php echo $info["price"];?></i></p>
 										<form action="#" method="post">
 											<input type="hidden" name="cmd" value="_cart" />
 											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="Laptop" /> 
-											<input type="hidden" name="amount" value="850.00" />   
+											<input type="hidden" name="w3ls_item" value="<?php echo $info["name"];?>" /> 
+											<input type="hidden" name="amount" value="<?php echo $info["price"];?>" />   
 											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
+										</form>  
 									</div>
 								</div>
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<img src="images/12.jpg" alt=" " class="img-responsive" />
-										
-										<div class="w3_hs_bottom">
-											<ul>
-												<li>
-													<a href="#" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<h5><a href="single.html">Notebook</a></h5>
-									<div class="simpleCart_shelfItem">
-										<p><span>$290</span> <i class="item_price">$280</i></p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="Notebook" /> 
-											<input type="hidden" name="amount" value="280.00" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-								</div>
-								<div class="col-md-4 agile_ecommerce_tab_left">
-									<div class="hs-wrapper">
-										<img src="images/13.jpg" alt=" " class="img-responsive" />
-										
-										<div class="w3_hs_bottom">
-											<ul>
-												<li>
-													<a href="#" data-toggle="modal" data-target="#myModal2"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<h5><a href="single.html">Kid's Toy</a></h5>
-									<div class="simpleCart_shelfItem">
-										<p><span>$120</span> <i class="item_price">$80</i></p>
-										<form action="#" method="post">
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" /> 
-											<input type="hidden" name="w3ls_item" value="Kid's Toy" /> 
-											<input type="hidden" name="amount" value="80.00" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
-										</form>
-									</div>
-								</div>
-								<div class="clearfix"> </div>
+                                <?php
+									}
+								?>
+   							<div class="clearfix"> </div>
 							</div>
 						</div>
 						<div role="tabpanel" class="tab-pane fade" id="tv" aria-labelledby="tv-tab">
@@ -815,18 +735,21 @@ include('login.php');
 	</div>
 	<!-- //modal-video -->
 	<!-- banner-bottom1 -->
+    <?php
+    $se=mysql_query("select * from products order by discount desc limit 1");
+	$info=mysql_fetch_array($se);
+	?>
 	<div class="banner-bottom1">
 		<div class="agileinfo_banner_bottom1_grids">
-			<div class="col-md-7 agileinfo_banner_bottom1_grid_left">
-				<h3>Grand Opening Event With flat<span>20% <i>Discount</i></span></h3>
-				<a href="products.html">Shop Now</a>
+			<div class="col-md-7 agileinfo_banner_bottom1_grid_left" style="background-image:url(products/<?php echo $info["photo"];?>)">
+				<h3>Grand Opening Event With flat<span><?php echo $info["discount"];?>% <i>Discount</i></span></h3>
+				<a href="product_info.php?pid=<?php echo $info['pid'];?>">Shop Now</a>
 			</div>
 			<div class="col-md-5 agileinfo_banner_bottom1_grid_right">
 				<h4>hot deal</h4>
 				<div class="timer_wrap">
 					<div id="counter"> </div>
 				</div>
-				<script src="js/jquery.countdown.js"></script>
 				<script src="js/script.js"></script>
 			</div>
 			<div class="clearfix"> </div>

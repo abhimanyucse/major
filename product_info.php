@@ -48,8 +48,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body> 
 	<!-- header modal -->
 <?php
+include("connect.php");
 include('login.php');
+$pid=$_REQUEST['pid'];
+echo $pid;
+$se=mysql_query("select * from products where pid='$pid'");
+$info=mysql_fetch_array($se);
 ?>
+
 	<!-- //header -->
 	<!-- navigation -->
 	<div class="navigation">
@@ -149,12 +155,13 @@ include('login.php');
 						<li data-thumb="images/a.jpg">
 							<div class="thumb-image"> <img src="images/a.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
 						</li>
-						<li data-thumb="images/b.jpg">
-							 <div class="thumb-image"> <img src="images/b.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                        <li data-thumb="images/a.jpg">
+							<div class="thumb-image"> <img src="images/a.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
 						</li>
-						<li data-thumb="images/c.jpg">
-						   <div class="thumb-image"> <img src="images/c.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-						</li> 
+                        <li data-thumb="images/a.jpg">
+							<div class="thumb-image"> <img src="images/a.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+						</li>
+                        
 					</ul>
 				</div>
 				<!-- flexslider -->
@@ -175,37 +182,17 @@ include('login.php');
 				<!-- //zooming-effect -->
 			</div>
 			<div class="col-md-8 single-right">
-				<h3>The Best 3GB RAM Mobile Phone</h3>
-				<div class="rating1">
-					<span class="starRating">
-						<input id="rating5" type="radio" name="rating" value="5">
-						<label for="rating5">5</label>
-						<input id="rating4" type="radio" name="rating" value="4">
-						<label for="rating4">4</label>
-						<input id="rating3" type="radio" name="rating" value="3" checked>
-						<label for="rating3">3</label>
-						<input id="rating2" type="radio" name="rating" value="2">
-						<label for="rating2">2</label>
-						<input id="rating1" type="radio" name="rating" value="1">
-						<label for="rating1">1</label>
-					</span>
-				</div>
+				<h3><?php echo $info["name"];?></h3>
+
 				<div class="description">
 					<h5><i>Description</i></h5>
-					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-						eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-						Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut 
-						odit aut fugit, sed quia consequuntur magni dolores eos qui 
-						ratione voluptatem sequi nesciunt.</p>
+					<p><?php echo $info["info"];?></p>
 				</div>
 				<div class="color-quality">
 					<div class="color-quality-left">
-						<h5>Color : </h5>
+						<h5>Category : </h5>
 						<ul>
-							<li><a href="#"><span></span></a></li>
-							<li><a href="#" class="brown"><span></span></a></li>
-							<li><a href="#" class="purple"><span></span></a></li>
-							<li><a href="#" class="gray"><span></span></a></li>
+							<a href="#"><?php echo ucfirst($info["category"]);?><span></span></a>
 						</ul>
 					</div>
 					<div class="color-quality-right">
@@ -254,7 +241,7 @@ include('login.php');
 					<div class="clearfix"> </div>
 				</div>
 				<div class="simpleCart_shelfItem">
-					<p><span>$460</span> <i class="item_price">$450</i></p>
+					<p><span>$<?php echo $info["price"];?></span> <i class="item_price">$<?php echo $info["price"]*$info["discount"]/100;?></i></p>
 					<form action="#" method="post">
 						<input type="hidden" name="cmd" value="_cart">
 						<input type="hidden" name="add" value="1"> 
@@ -267,114 +254,6 @@ include('login.php');
 			<div class="clearfix"> </div>
 		</div>
 	</div> 
-	<div class="additional_info">
-		<div class="container">
-			<div class="sap_tabs">	
-				<div id="horizontalTab1" style="display: block; width: 100%; margin: 0px;">
-					<ul>
-						<li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>Product Information</span></li>
-						<li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Reviews</span></li>
-					</ul>		
-					<div class="tab-1 resp-tab-content additional_info_grid" aria-labelledby="tab_item-0">
-						<h3>The Best 3GB RAM Mobile Phone</h3>
-						<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-							eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-							Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut 
-							odit aut fugit, sed quia consequuntur magni dolores eos qui 
-							ratione voluptatem sequi nesciunt.Ut enim ad minima veniam, quis nostrum 
-							exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea 
-							commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate 
-							velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat 
-							quo voluptas nulla pariatur.</p>
-					</div>	
-
-					<div class="tab-2 resp-tab-content additional_info_grid" aria-labelledby="tab_item-1">
-						<h4>(2) Reviews</h4>
-						<div class="additional_info_sub_grids">
-							<div class="col-xs-2 additional_info_sub_grid_left">
-								<img src="images/t1.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="col-xs-10 additional_info_sub_grid_right">
-								<div class="additional_info_sub_grid_rightl">
-									<a href="single.html">Laura</a>
-									<h5>Oct 06, 2016.</h5>
-									<p>Quis autem vel eum iure reprehenderit qui in ea voluptate 
-										velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat 
-										quo voluptas nulla pariatur.</p>
-								</div>
-								<div class="additional_info_sub_grid_rightr">
-									<div class="rating">
-										<div class="rating-left">
-											<img src="images/star-.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/star-.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/star-.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/star.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/star.png" alt=" " class="img-responsive">
-										</div>
-										<div class="clearfix"> </div>
-									</div>
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="additional_info_sub_grids">
-							<div class="col-xs-2 additional_info_sub_grid_left">
-								<img src="images/t2.png" alt=" " class="img-responsive" />
-							</div>
-							<div class="col-xs-10 additional_info_sub_grid_right">
-								<div class="additional_info_sub_grid_rightl">
-									<a href="single.html">Michael</a>
-									<h5>Oct 04, 2016.</h5>
-									<p>Quis autem vel eum iure reprehenderit qui in ea voluptate 
-										velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat 
-										quo voluptas nulla pariatur.</p>
-								</div>
-								<div class="additional_info_sub_grid_rightr">
-									<div class="rating">
-										<div class="rating-left">
-											<img src="images/star-.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/star-.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/star.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/star.png" alt=" " class="img-responsive">
-										</div>
-										<div class="rating-left">
-											<img src="images/star.png" alt=" " class="img-responsive">
-										</div>
-										<div class="clearfix"> </div>
-									</div>
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="review_grids">
-							<h5>Add A Review</h5>
-							<form action="#" method="post">
-								<input type="text" name="Name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required>
-								<input type="email" name="Email" placeholder="Email" required>
-								<input type="text" name="Telephone" value="Telephone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Telephone';}" required>
-								<textarea name="Review" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Add Your Review';}" required>Add Your Review</textarea>
-								<input type="submit" value="Submit" >
-							</form>
-						</div>
-					</div> 			        					            	      
-				</div>	
-			</div>
 			<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
 			<script type="text/javascript">
 				$(document).ready(function () {

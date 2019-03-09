@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2019 at 08:19 PM
+-- Generation Time: Mar 09, 2019 at 06:55 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -34,6 +34,13 @@ CREATE TABLE `admin` (
   `phone` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`mid`, `name`, `Designation`, `email`, `phone`) VALUES
+(1, 'm', 'k', 'a@.n', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -61,6 +68,15 @@ CREATE TABLE `master` (
   `type` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `master`
+--
+
+INSERT INTO `master` (`mid`, `username`, `password`, `status`, `type`) VALUES
+(1, 'a@.n', 'm', 'A', 'A'),
+(2, 'm@k.m', 'm', 'A', 'S'),
+(3, 'f@g.m', 'm', 'A', 'S');
+
 -- --------------------------------------------------------
 
 --
@@ -74,8 +90,26 @@ CREATE TABLE `products` (
   `price` int(11) NOT NULL,
   `seller` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `discount` int(11) NOT NULL
+  `discount` int(11) NOT NULL,
+  `category` text NOT NULL,
+  `info` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`pid`, `name`, `photo`, `price`, `seller`, `quantity`, `discount`, `category`, `info`) VALUES
+(9, 'm', '9.jpg', 90, 2, 90, 90, 'game', '1'),
+(10, 'ma', '10.jpg', 90, 2, 98, 90, 'game', '2'),
+(11, 'MAc', '11.jpg', 89, 2, 89, 78, 'game', '3'),
+(12, 'mac', '12.jpg', 89, 3, 78, 78, 'books', 'kl'),
+(13, 'mac1', '13.jpg', 89, 2, 78, 78, 'books', '89'),
+(14, 'mac2', '14.png', 88, 3, 78, 78, 'books', 'gh'),
+(15, 't1', '15.jpg', 88, 3, 78, 78, 'Calender', '67'),
+(16, 't2', '16.jpg', 88, 3, 78, 78, 'Calender', '56'),
+(17, 't3', '17.jpg', 88, 3, 78, 78, 'Calender', 'gh'),
+(18, 'jk', '18.gif', 89, 2, 78, 78, 'books', 'mnmnmnmnmn');
 
 -- --------------------------------------------------------
 
@@ -89,8 +123,16 @@ CREATE TABLE `seller` (
   `organization` varchar(200) NOT NULL,
   `address` varchar(1000) NOT NULL,
   `phone` int(11) NOT NULL,
-  `email` date NOT NULL
+  `email` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `seller`
+--
+
+INSERT INTO `seller` (`mid`, `name`, `organization`, `address`, `phone`, `email`) VALUES
+(2, 'm', 'k', 'k', 909090909, 'p'),
+(3, 'm', 'jk', 'kl', 9090, 'f@g.m');
 
 -- --------------------------------------------------------
 
@@ -140,7 +182,7 @@ ALTER TABLE `products`
 -- Indexes for table `seller`
 --
 ALTER TABLE `seller`
-  ADD KEY `mid` (`mid`);
+  ADD PRIMARY KEY (`mid`);
 
 --
 -- Indexes for table `transaction`
@@ -158,12 +200,12 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for table `master`
 --
 ALTER TABLE `master`
-  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `transaction`
 --

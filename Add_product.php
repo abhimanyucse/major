@@ -175,6 +175,8 @@ include('login.php');
                         <br>
 						<input style="width:32.63%;" type="number" name="discount" placeholder="Discount in %" required><br>
                         <br>
+                        <textarea name="info" style="width:32.63%;" placeholder="Information"></textarea>
+                        <br>
                         <input type="file" name="image" id="files" class="hidden"/>
 						<label for="files">Add Photos Of the Product</label>
                         <br><br>
