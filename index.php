@@ -198,12 +198,12 @@ include('login.php');
 									</div> 
 									<h5><a href="single.html"><?php echo $info["name"];?></a></h5>
 									<div class="simpleCart_shelfItem">
-										<p><span>$<?php echo $info["price"];?></span> <i class="item_price">$<?php echo $info["price"];?></i></p>
+										<p><span>$<?php echo $info["price"];?></span> <i class="item_price">$<?php echo $info["price"]-$info["price"]*$info["discount"]/100;?></i></p>
 										<form action="#" method="post">
 											<input type="hidden" name="cmd" value="_cart" />
 											<input type="hidden" name="add" value="1" /> 
 											<input type="hidden" name="w3ls_item" value="<?php echo $info["name"];?>" /> 
-											<input type="hidden" name="amount" value="<?php echo $info["price"];?>" />   
+											<input type="hidden" name="amount" value="<?php echo $info["price"]-$info["price"]*$info["discount"]/100;?>" />   
 											<button type="submit" class="w3ls-cart">Add to cart</button>
 										</form>  
 									</div>
@@ -235,12 +235,12 @@ include('login.php');
 									</div> 
 									<h5><a href="single.html"><?php echo $info["name"];?></a></h5>
 									<div class="simpleCart_shelfItem">
-										<p><span>$<?php echo $info["price"];?></span> <i class="item_price">$<?php echo $info["price"];?></i></p>
+										<p><span>$<?php echo $info["price"];?></span> <i class="item_price">$<?php echo $info["price"]-$info["price"]*$info["discount"]/100;?></i></p>
 										<form action="#" method="post">
 											<input type="hidden" name="cmd" value="_cart" />
 											<input type="hidden" name="add" value="1" /> 
 											<input type="hidden" name="w3ls_item" value="<?php echo $info["name"];?>" /> 
-											<input type="hidden" name="amount" value="<?php echo $info["price"];?>" />   
+											<input type="hidden" name="amount" value="<?php echo $info["price"]-$info["price"]*$info["discount"]/100;?>" />   
 											<button type="submit" class="w3ls-cart">Add to cart</button>
 										</form>  
 									</div>
@@ -272,12 +272,12 @@ include('login.php');
 									</div> 
 									<h5><a href="single.html"><?php echo $info["name"];?></a></h5>
 									<div class="simpleCart_shelfItem">
-										<p><span>$<?php echo $info["price"];?></span> <i class="item_price">$<?php echo $info["price"];?></i></p>
+										<p><span>$<?php echo $info["price"];?></span> <i class="item_price">$<?php echo $info["price"]-$info["price"]*$info["discount"]/100;?></i></p>
 										<form action="#" method="post">
 											<input type="hidden" name="cmd" value="_cart" />
 											<input type="hidden" name="add" value="1" /> 
 											<input type="hidden" name="w3ls_item" value="<?php echo $info["name"];?>" /> 
-											<input type="hidden" name="amount" value="<?php echo $info["price"];?>" />   
+											<input type="hidden" name="amount" value="<?php echo $info["price"]-$info["price"]*$info["discount"]/100;?>" />   
 											<button type="submit" class="w3ls-cart">Add to cart</button>
 										</form>  
 									</div>
