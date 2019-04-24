@@ -163,6 +163,7 @@ foreach($_SESSION['cart'] as $key=>$value){
 	echo "<br><br><br>".$total;
 ?>
 <?php
+//session_destroy();
 include("footer.php");
 ?>
 </body>
