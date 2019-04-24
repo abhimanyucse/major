@@ -197,6 +197,7 @@ foreach($_SESSION['cart'] as $key=>$value){
 
 </div>
 <?php
+//session_destroy();
 include("footer.php");
 ?>
 </body>

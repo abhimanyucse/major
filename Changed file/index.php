@@ -43,6 +43,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	});
 	
 </script>
+<script>
+$(document).ready(function() {
+    $(".w3ls-cart").click(function(){
+		var id=$(this).attr("id");
+		var my='pid='+id;
+		$.ajax({
+			data:my,
+			type:'post',
+			url:"cart_session.php",
+			success:function(mess){
+				alert(mess);
+				}
+			});
+		
+		});
+});
+</script>
 
 <!-- //end-smooth-scrolling --> 
 </head> 
