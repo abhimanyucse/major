@@ -204,7 +204,7 @@ include('login.php');
 											<input type="hidden" name="add" value="1" /> 
 											<input type="hidden" name="w3ls_item" value="<?php echo $info["name"];?>" /> 
 											<input type="hidden" name="amount" value="<?php echo $info["price"]-$info["price"]*$info["discount"]/100;?>" />   
-											<button type="submit" class="w3ls-cart">Add to cart</button>
+											<button type="submit" id="<?php echo $info['pid'] ?>" class="w3ls-cart">Add to cart</button>
 										</form>  
 									</div>
 								</div>

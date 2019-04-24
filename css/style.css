@@ -4989,3 +4989,21 @@ td.invert-image a img {
 		margin-bottom: 1em;
 	}
 }
+
+/* Custom styling */
+
+.cartMain{
+	padding: 10px;
+}
+
+.cartItem{
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.totalCart{
+	display: flex;
+	justify-content: space-between
+}
