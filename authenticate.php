@@ -7,7 +7,9 @@
 
 <body>
 <?php
-$uid=$_REQUEST['uid'];
+$uid=$_GET['uid'];
+
+echo $uid;
     # --- DECRYPTION ---
 	$key = pack('H*', "bcb04b7e103a0cd8b54763051cef08bc55abe029fdebae5e1d417e2ffb2a00a3");
     
@@ -34,7 +36,9 @@ $uid=$_REQUEST['uid'];
                                     $ciphertext_dec, MCRYPT_MODE_CBC, $iv_dec);
     
 	echo $uid;
-	
+	include "connect.php";
+	$se=mysql_query("update master set verify='T' where mid='".$uid."'");
+
 ?>
 </body>
 </html>

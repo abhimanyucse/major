@@ -8,6 +8,7 @@ $phone=$_POST['phone'];
 $insert_master=mysql_query("insert into master set username='$email',password='$name',type='A'") or die("insertion problem");
 $uid=mysql_insert_id();
 $insert=mysql_query("insert into admin set name='$name',Designation='$des',email='$email',phone='$phone',mid='$uid'") or die("cannot insert");
+
 $key = pack('H*', "bcb04b7e103a0cd8b54763051cef08bc55abe029fdebae5e1d417e2ffb2a00a3");
     
     # show key size use either 16, 24 or 32 byte keys for AES-128, 192
@@ -48,7 +49,7 @@ $body="<!DOCTYPE html >
 <title>Untitled Document</title>
 </head>
 <body>
-<a href="."'localhost/major_sa/authenticate.php?uid=".$ciphertext_base64."'>Click Verify</a>
+<a href="."'localhost/major/authenticate.php?uid=".$ciphertext_base64."'>Click Verify</a>
 </body>
 </html>";
 sendmail($email,'Email Verification',$body);

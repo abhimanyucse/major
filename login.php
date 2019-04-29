@@ -1,3 +1,9 @@
+<?php session_start();
+if(isset($_SESSION['mid'])){
+	}
+	else{
+		
+?>
 	<div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
 		aria-hidden="true">
 		<div class="modal-dialog modal-lg">
@@ -35,7 +41,7 @@
 													<input placeholder="Password" id="pass_r" name="Password" type="password" required>
 													<input placeholder="Confirm Password" id="cpass_r" name="Password" type="password" required>
 													<div class="sign-up">
-														<input type="submit" id="register" value="Create Account"/>
+														<input type="submit" id="register34" value="Create Account"/>
 													</div>
 											</div>
 										</div>
@@ -50,60 +56,28 @@
 										width: 'auto', //auto or any width like 600px
 										fit: true   // 100% fit in a container
 									});
-									$("#register").click(function(){
+									$("#register34").click(function(){
 										 var name_r=$("#name_r").val();
 										 var email_r=$("#email_r").val();
 										 var pass_r=$("#pass_r").val();										 
 										 var cpass_r=$("#cpass_r").val();
-										 var stri="";	
-										 var data="name="+name+"&email="+email_r+"&pass="+pass_r+"&cpass="+cpass;
-										 if(name_r==""){
-											 stri="Name ";
-											 }
-											 if(email_r==""){
-												 stri+="Email ";
-												 }
-												 if(pass_r==""){
-													 stri+="Password ";
-													 }
-													 if(cpass_r==""){
-														 stri+="Confirm Password ";
-														 }
-														 if(stri.length!=0)
-														 alert(stri+"Empty");
-														 else{
+										 var data="name="+name_r+"&email="+email_r+"&pass="+pass_r+"&cpass="+cpass_r;
+										 alert("yu");
 														 $.ajax({
 															 url: "customer_registered.php",
 															 type:'POST',
 															 data:data,
 															 success: function(mess){
-																 if(mess=="Success"){
-																	 alert("Registration Successful");
-																	 }
-																	 else{
 																		 alert(mess);
 																		 }
-																 }
 															 });									 
-														 }
+														 
 										});
 									$("#login").click(function(){
 										 var email_l=$("#email_l").val();
 										 var pass_l=$("#pass_l").val();										 
 										 var stri="";	
 										 var data="email="+email_l+"&pass="+pass_l;
-										 	 if(email_l==""){
-												 stri+="Email ";
-												 }
-												 if(pass_l==""){
-													 stri+="Password ";
-													 }
-													 if(cpass_r==""){
-														 stri+="Confirm Password ";
-														 }
-														 if(stri.length!=0)
-														 alert(stri+"Empty");
-														 else{
 														 $.ajax({
 															 url: "login_check.php",
 															 type:'POST',
@@ -117,13 +91,14 @@
 																		 }
 																 }
 															 });									 
-														 }
+														 
 										});
 
 								});
 							</script>
 						</div>
-						<!-- <div class="col-md-4 modal_body_right modal_body_right1">
+		
+        		<!-- <div class="col-md-4 modal_body_right modal_body_right1">
 							<div class="row text-center sign-with">
 								<div class="col-md-12">
 									<h3 class="other-nw">Sign in with</h3>
@@ -146,12 +121,21 @@
 
 	<!-- header modal -->
 	<!-- header -->
+        <?php
+	}
+		?>		
 	<div class="header" id="home1">
 		<div class="container">
-			<div class="w3l_login">
+<?php
+if(!isset($_SESSION['mid'])){
+?>			<div class="w3l_login">
 				<a href="#" data-toggle="modal" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+                
 			</div>
-			<div class="w3l_logo">
+
+<?php
+}
+?>			<div class="w3l_logo">
 				<h1><a href="index.php">Spiritual Store<span>Your stores. Your place.</span></a></h1>
 			</div>
 			<div class="search">
