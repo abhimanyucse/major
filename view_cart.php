@@ -145,23 +145,57 @@ include('login.php');
 	</div>
 	<!-- //navigation -->
 	<!-- banner -->
+	<div class="container cartMain">
 <?php
 $total=0;
 foreach($_SESSION['cart'] as $key=>$value){
 	$pid= $_SESSION['cart'][$key]['productID']."\t";
 	$qty= $_SESSION['cart'][$key]['Quantity']."<br>";
 	$se=mysql_query("select * from products where pid=$pid");
+	if($se != false){
 	$info=mysql_fetch_array($se);
-	echo $info['name']."\t";
-	echo $info['price']*(100-$info['discount'])/100;
-	echo "\t".$qty."\t <br>";
+	// echo $info['name']."\t";
+	// echo $info['price']*(100-$info['discount'])/100;
+	// echo "\t".$qty."\t <br>";
 	$total+=$qty*$info['price']*(100-$info['discount'])/100;
 ?>
 
+
+		<div class="row well cartItem">
+			<div class="col-md-4">
+				<img src="images/<?php echo $info['photo'] ?>" height="90px" width="90px" />
+			</div>
+			<div class="col-md-2">
+				<h4><?php echo $info['name'] ?></h4>
+			</div>
+			<div class="col-md-1">
+				<?php echo $qty ?>
+			</div>
+			<div class="col-md-3">
+				<h4>$ <?php echo $info['price']*(100-$info['discount'])/100 ?></h4>
+			</div>
+			<div class="col-md-2">
+			<button type="button" class="btn btn-danger">X</button>
+			</div>
+		</div>
+
+
 <?php
 	}
-	echo "<br><br><br>".$total;
+}
+	// echo $total;
 ?>
+<hr />
+<div class="totalCart">
+	<div>
+		<h3>Total:</h3>
+	</div>
+	<div>
+		<strong><h3>$ <?php echo $total ?></h3></strong>
+	</div>
+</div>
+
+</div>
 <?php
 //session_destroy();
 include("footer.php");

@@ -12,7 +12,6 @@ $(document).ready(function() {
 			type:'post',
 			url:"cart_session.php",
 			success:function(mess){
-				
 				}
 			});
 		
