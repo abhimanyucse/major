@@ -122,6 +122,13 @@ include('login.php');
 							</ul>
 						</li>   -->
 						<li><a href="mail.php">Mail Us</a></li>
+                        <?php
+                          if(isset($_SESSION['type'])&&isset($_SESSION['mid'])){
+						?>
+                        <li><a href="logout.php" class="act">Logout</a>
+                         <?php
+											}
+						 ?>
 					</ul>
 				</div>
 			</nav>
@@ -271,6 +278,9 @@ include('login.php');
 					<div class="w3ls_mobiles_grid_right_grid3">
 									<?php 
 										$q=mysql_query("select * from products");
+										if(isset($_SESSION['type'])&&$_SESSION['type']=='S'){
+											$q=mysql_query("select * from products where seller=".$_SESSION['mid']);
+											}
 										while($product=mysql_fetch_array($q)){
 									?>
 						<div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
@@ -295,7 +305,21 @@ include('login.php');
 											<input type="hidden" name="add" value="1" /> 
 											<input type="hidden" name="w3ls_item" value="<?php echo $product["name"];?>" /> 
 											<input type="hidden" name="amount" value="<?php echo $product["price"]-$product["price"]*$product["discount"]/100;?>"/>   
+                                            <?php
+											
+                                            if(isset($_SESSION['type'])&&$_SESSION['type']=='customer'){
+												if($product['quantity']>0){
+											?>
 											<button type="submit" class="w3ls-cart" id="<?php echo $product["pid"]; ?>">Add to cart</button>
+                                            <?php
+											}
+											if($product['quantity']==0){
+												?>
+                                       			<b style="color:#F00;">Out Of Stock</b>
+                                                <?php
+												}
+											}
+											?>
 										</form>
 									</div> 
 								</div>

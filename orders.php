@@ -1,17 +1,11 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Spiritual Store</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+<meta name="keywords" content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 	function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -19,43 +13,68 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- Custom Theme files -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
 <!-- //Custom Theme files -->
 <!-- font-awesome icons -->
-<link href="css/font-awesome.css" rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <!-- js -->
 <script src="js/jquery.min.js"></script>
-<!-- //js -->
-<!-- web fonts -->
+<link rel="stylesheet" href="css/jquery.countdown.css" /> <!-- countdown --> 
+<!-- //js -->  
+<!-- web fonts --> 
 <link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!-- //web fonts -->
-<!-- for bootstrap working -->
-<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
-<!-- //for bootstrap working -->
+<!-- //web fonts -->  
 <!-- start-smooth-scrolling -->
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event){
+		$(".scroll").click(function(event){		
 			event.preventDefault();
 			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 		});
 	});
+	
 </script>
-<!-- //end-smooth-scrolling -->
+<script>
+$(document).ready(function() {
+    $(".w3ls-cart").click(function(){
+		var id=$(this).attr("id");
+		var my='pid='+id;
+		$.ajax({
+			data:my,
+			type:'post',
+			url:"cart_session.php",
+			success:function(mess){
+				alert(mess);
+				}
+			});
+		
+		});
+});
+</script>
+
+<!-- //end-smooth-scrolling --> 
 </head>
 <body>
+	<!-- for bootstrap working -->
+	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+	<!-- //for bootstrap working -->
 	<!-- header modal -->
+
 <?php
-
-include('login.php');
 //session_start();
-if(isset($_SESSION['type'])&&$_SESSION['type']=='A'){}
+include("connect.php");
+include('login.php');
+if(isset($_SESSION["mid"])&&isset($_SESSION["mid"])&&$_SESSION["type"]=="customer"){
+	
+		}
 else{
-	header("location:index.php");
+	header("Location: index.php");
 	}
-
 ?>
+
 	<!-- //header -->
 	<!-- navigation -->
 	<div class="navigation">
@@ -126,13 +145,7 @@ else{
 							</ul>
 						</li>   -->
 						<li><a href="mail.php">Mail Us</a></li>
-                        <?php
-                        if(isset($_SESSION['mid'])&&isset($_SESSION['type'])){
-						?>
-							<li><a href="logout.php" class="act">Logout</a></li>	
-                        <?php
-						}
-						?>
+						<li><a href="logout.php" class="act">Logout</a></li>	
 					</ul>
 				</div>
 			</nav>
@@ -140,71 +153,49 @@ else{
 	</div>
 	<!-- //navigation -->
 	<!-- banner -->
-	<div class="banner banner10">
-		<div class="container">
-			<h2>Mail Us</h2>
-		</div>
-	</div>
-	<!-- //banner -->
-	<!-- breadcrumbs -->
-	<div class="breadcrumb_dress">
-		<div class="container">
-			<ul>
-				<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a> <i>/</i></li>
-				<li>Mail Us</li>
-			</ul>
-		</div>
-	</div>
-	<!-- //breadcrumbs -->
-	<!-- mail -->
-	<div class="mail">
-		<div class="container">
-
-			<h3>Admin</h3>
-
-			<div class="agile_mail_grids">
-				<div class="mcol-md-7 contact-left" >
-						<input type="text" name="Name" id="name" placeholder="Your Name" required><br>
-                        <br>
-						<input type="text" name="Designation" id="des" placeholder="Designation" required><br>
-                        <br>
-						<input style="margin:0 0 0" type="email" id="email" name="Email" placeholder="Your Email" required><br>
-                        <br>
-						<input style="width:32.63%;" type="number" id="phone" name="Phone" placeholder="Phone No." required><br>
-                        <br>
-						<input type="submit" value="Submit" id="reg">
-                    <script>
-                    $(document).ready(function(){
-	$("#reg").click(function(){
-		var name=$("#name").val();
-		var des=$("#des").val();
-		var email=$("#email").val();
-		var phone=$("phone").val();
-		var my="name="+name+"&des="+des+"&email="+email+"&phone="+phone;
-						   if(name==""||des==""||email==""||phone==""){
-							   alert("mandatory field empty");
-							   return false;
-							   }
-						   else{
-						     $.ajax({
-				                    url:"admin_registered.php",
-				                    data:my,
-				                    type:'post',
-				                    success: function(mess){
-									alert(mess);
-					                   }
-				                    });
-						   }
-		});
-		});
-                    </script>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-
-		</div>
-	</div>
+	<div class="container cartMain">
 <?php
+if(isset($_SESSION['cart'])){
+unset($_SESSION['cart']);
+	}
+$se=mysql_query("select * from transaction where mid='".$_SESSION['mid']."' order by date");
+if($se!=false){
+while($info=mysql_fetch_array($se)){
+	$se1=mysql_query("select *from products where pid='".$info['pid']."'");
+	$info1=mysql_fetch_array($se1);
+	?>
+
+		<div class="row well cartItem">
+			<div class="col-md-4">
+				<img src="products/<?php echo $info1['photo'] ?>" height="90px" width="90px" />
+			</div>
+			<div class="col-md-2">
+				<h4><?php echo $info1['name'] ?></h4>
+			</div>
+			<div class="col-md-1">
+				<?php echo $info['quantity'] ?>
+			</div>
+			<div class="col-md-3">
+				<h4><?php echo $info['address'] ?></h4>
+			</div>
+            <div class="col-md-3">
+				<h4><?php echo $info['date'] ?></h4>
+			</div>
+		</div>
+
+
+<?php
+	}
+}
+
+	// echo $total;
+?>
+<hr />
+
+</div>
+<?php
+
+//session_destroy();
 include("footer.php");
 ?>
 </body>

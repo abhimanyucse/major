@@ -64,10 +64,21 @@ $(document).ready(function() {
 	<!-- header modal -->
 
 <?php
-session_start();
+//session_start();
 include("connect.php");
 include('login.php');
+if(isset($_SESSION["mid"])&&isset($_SESSION["mid"])&&$_SESSION["type"]=="customer"){
+	
+		}
+else{
+	header("Location: index.php");
+	}
+if(isset($_POST["clear_cart"])){
+	//session_start();
+	unset($_SESSION['cart']);
+	}
 ?>
+
 	<!-- //header -->
 	<!-- navigation -->
 	<div class="navigation">
@@ -138,6 +149,7 @@ include('login.php');
 							</ul>
 						</li>   -->
 						<li><a href="mail.php">Mail Us</a></li>
+						<li><a href="logout.php" class="act">Logout</a></li>	
 					</ul>
 				</div>
 			</nav>
@@ -147,6 +159,7 @@ include('login.php');
 	<!-- banner -->
 	<div class="container cartMain">
 <?php
+if(isset($_SESSION['cart'])){
 $total=0;
 foreach($_SESSION['cart'] as $key=>$value){
 	$pid= $_SESSION['cart'][$key]['productID']."\t";
@@ -183,8 +196,13 @@ foreach($_SESSION['cart'] as $key=>$value){
 <?php
 	}
 }
+
 	// echo $total;
 ?>
+<form method="post"  action="view_cart.php">
+<input type="submit" value="Clear Cart"  name="clear_cart">
+</form>
+
 <hr />
 <div class="totalCart">
 	<div>
@@ -197,6 +215,7 @@ foreach($_SESSION['cart'] as $key=>$value){
 
 </div>
 <?php
+}
 //session_destroy();
 include("footer.php");
 ?>

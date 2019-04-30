@@ -47,14 +47,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 	<!-- header modal -->
 <?php
-
+ob_start();
 include('login.php');
 //session_start();
-if(isset($_SESSION['type'])&&$_SESSION['type']=='A'){}
+if(isset($_SESSION['type'])&&$_SESSION['type']=='customer'&&isset($_SESSION['cart'])){}
 else{
-	header("location:index.php");
+	header("Location: index.php");
 	}
-
 ?>
 	<!-- //header -->
 	<!-- navigation -->
@@ -127,11 +126,13 @@ else{
 						</li>   -->
 						<li><a href="mail.php">Mail Us</a></li>
                         <?php
-                        if(isset($_SESSION['mid'])&&isset($_SESSION['type'])){
+                        if(isset($_SESSION['mid'])&&isset($_SESSION['type'])&&$_SESSION['type']=="customer"){
 						?>
 							<li><a href="logout.php" class="act">Logout</a></li>	
                         <?php
-						}
+						}else{
+							header("Location: index.php");;
+							}
 						?>
 					</ul>
 				</div>
@@ -160,44 +161,22 @@ else{
 	<div class="mail">
 		<div class="container">
 
-			<h3>Admin</h3>
+			<h3>Enter Details</h3>
 
 			<div class="agile_mail_grids">
 				<div class="mcol-md-7 contact-left" >
-						<input type="text" name="Name" id="name" placeholder="Your Name" required><br>
+                <form action="order_placed.php" method="post">
+						<input type="text" name="name" id="name" placeholder="Your Name" required><br>
                         <br>
-						<input type="text" name="Designation" id="des" placeholder="Designation" required><br>
+						<input style="width:32.63%;" type="number" name="phone" id="phone" placeholder="Contact No." required><br>
                         <br>
-						<input style="margin:0 0 0" type="email" id="email" name="Email" placeholder="Your Email" required><br>
+						<textarea style="margin:0 0 0"  id="Address" name="addr" placeholder="Address" required></textarea><br>
                         <br>
-						<input style="width:32.63%;" type="number" id="phone" name="Phone" placeholder="Phone No." required><br>
+						<input style="width:32.63%;" type="number" id="zip" name="zip" placeholder="ZIP CODE" required><br>
                         <br>
 						<input type="submit" value="Submit" id="reg">
-                    <script>
-                    $(document).ready(function(){
-	$("#reg").click(function(){
-		var name=$("#name").val();
-		var des=$("#des").val();
-		var email=$("#email").val();
-		var phone=$("phone").val();
-		var my="name="+name+"&des="+des+"&email="+email+"&phone="+phone;
-						   if(name==""||des==""||email==""||phone==""){
-							   alert("mandatory field empty");
-							   return false;
-							   }
-						   else{
-						     $.ajax({
-				                    url:"admin_registered.php",
-				                    data:my,
-				                    type:'post',
-				                    success: function(mess){
-									alert(mess);
-					                   }
-				                    });
-						   }
-		});
-		});
-                    </script>
+                        
+                    </form>
 				</div>
 				<div class="clearfix"> </div>
 			</div>

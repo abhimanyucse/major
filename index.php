@@ -126,6 +126,13 @@ include('login.php');
 							</ul>
 						</li>   -->
 						<li><a href="mail.php">Mail Us</a></li>
+                        <?php
+                        if(isset($_SESSION['mid'])&&isset($_SESSION['type'])){
+						?>
+							<li><a href="logout.php" class="act">Logout</a></li>	
+                        <?php
+						}
+						?>
 					</ul>
 				</div>
 			</nav>
@@ -206,7 +213,13 @@ include('login.php');
 											<input type="hidden" name="add" value="1" /> 
 											<input type="hidden" name="w3ls_item" value="<?php echo $info["name"];?>" /> 
 											<input type="hidden" name="amount" value="<?php echo $info["price"]-$info["price"]*$info["discount"]/100;?>" />   
-											<button type="submit" class="w3ls-cart" id="<?php echo $info['pid'];?>">Add to cart</button>
+                                            <?php
+                                            if(isset($_SESSION['type'])&&$_SESSION['type']=='customer'){
+											?>
+											<button type="submit" class="w3ls-cart" id="<?php echo $info['pid'];?>">Add to cart</button>	
+                                            <?php
+											}
+											?>
 										</form>  
 									</div>
 								</div>
@@ -243,7 +256,13 @@ include('login.php');
 											<input type="hidden" name="add" value="1" /> 
 											<input type="hidden" name="w3ls_item" value="<?php echo $info["name"];?>" /> 
 											<input type="hidden" name="amount" value="<?php echo $info["price"]-$info["price"]*$info["discount"]/100;?>" />   
+                                            <?php
+                                            if(isset($_SESSION['type'])&&$_SESSION['type']=='customer'){
+											?>
 											<button type="submit" class="w3ls-cart" id="<?php echo $info['pid'];?>">Add to cart</button>
+                                            <?php
+											}
+											?>
 										</form>  
 									</div>
 								</div>
@@ -280,7 +299,13 @@ include('login.php');
 											<input type="hidden" name="add" value="1" /> 
 											<input type="hidden" name="w3ls_item" value="<?php echo $info["name"];?>" /> 
 											<input type="hidden" name="amount" value="<?php echo $info["price"]-$info["price"]*$info["discount"]/100;?>" />   
+                                            <?php
+                                            if(isset($_SESSION['type'])&&$_SESSION['type']=='customer'){
+											?>
 											<button type="submit"  id="<?php echo $info['pid'];?>" class="w3ls-cart">Add to cart</button>
+                                            <?php
+											}
+											?>
 										</form>  
 									</div>
 								</div>
