@@ -1,3 +1,4 @@
+
 <?php session_start();
 if(isset($_SESSION['mid'])){
 	}
@@ -135,7 +136,17 @@ if(!isset($_SESSION['mid'])){
 
 <?php
 }
-?>			<div class="w3l_logo">
+if(isset($_SESSION['mid'])&&$_SESSION['type']=="customer"){
+?>
+			<div class="w3l_login">
+				<a href="profile.php" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+                
+			</div>
+
+<?php
+}
+?>
+			<div class="w3l_logo">
 				<h1><a href="index.php">Spiritual Store<span>Your stores. Your place.</span></a></h1>
 			</div>
 			<div class="search">
