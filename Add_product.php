@@ -49,6 +49,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <?php
 include('connect.php');
 include('login.php');
+if(isset($_SESSION['mid'])&&isset($_SESSION['type'])){
+	if($_SESSION['type']=="A"||$_SESSION['type']=='S'){
+		}
+		else{
+			header("Location: index.php");
+			}
+	}else{
+			header("Location: index.php");
+			}
 ?>
 	<!-- //header -->
 	<!-- navigation -->

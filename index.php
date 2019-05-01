@@ -5,8 +5,7 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <title>Spiritual Store</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,6 +50,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
 	<!-- //for bootstrap working -->
 	<!-- header modal -->
+  <script>
+$(document).ready(function() {
+    $(".w3ls-cart").click(function(){
+		var id=$(this).attr("id");
+		var my='pid='+id;
+		$.ajax({
+			data:my,
+			type:'post',
+			url:"cart_session.php",
+			success:function(mess){
+				}
+			});
+		
+		});
+});
+</script>
+
 
 <?php
 include("connect.php");

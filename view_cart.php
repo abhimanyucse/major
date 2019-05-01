@@ -172,10 +172,9 @@ foreach($_SESSION['cart'] as $key=>$value){
 	$total+=$qty*$info['price']*(100-$info['discount'])/100;
 ?>
 
-
 		<div class="row well cartItem">
 			<div class="col-md-4">
-				<img src="images/<?php echo $info['photo'] ?>" height="90px" width="90px" />
+				<img src="products/<?php echo $info['photo'] ?>" height="90px" width="90px" />
 			</div>
 			<div class="col-md-2">
 				<h4><?php echo $info['name'] ?></h4>
@@ -196,7 +195,7 @@ foreach($_SESSION['cart'] as $key=>$value){
 	}
 }
 
-	// echo $total;
+	
 ?>
 <form method="post"  action="view_cart.php">
 <input type="submit" value="Clear Cart"  name="clear_cart">
@@ -208,7 +207,7 @@ foreach($_SESSION['cart'] as $key=>$value){
 		<h3>Total:</h3>
 	</div>
 	<div>
-		<strong><h3>$ <?php echo $total ?></h3></strong>
+		<strong><h3>$ <?php echo $total; ?></h3></strong>
 	</div>
 </div>
 

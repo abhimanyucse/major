@@ -47,6 +47,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head> 
 <body> 
 	<!-- header modal -->
+    <script>
+$(document).ready(function() {
+    $(".w3ls-cart").click(function(){
+		var id=$(this).attr("id");
+		var my='pid='+id;
+		$.ajax({
+			data:my,
+			type:'post',
+			url:"cart_session.php",
+			success:function(mess){
+				}
+			});
+		
+		});
+});
+</script>
+
 <?php
 include('connect.php');
 include('login.php');
@@ -176,6 +193,23 @@ include('login.php');
 									});
 								}
 								}));
+								$(".quant").keypress(function(e){
+									var keycode = (event.keyCode ? event.keyCode : event.which);
+									if(keycode=='13'){
+									var id=$(this).attr("id");
+									var quant=$("#"+id).val();
+									var data="quant="+quant+"&id="+id;
+									//alert(data);
+									$.ajax({
+										url: "restock.php",
+										method: 'post',
+										data: data,
+										success: function(mess){
+										alert(mess);	
+											}
+										});
+									}
+									});
                         });
 						</script>
 						<!-- <div class="w3ls_mobiles_grid_left_grid_sub">
@@ -310,6 +344,7 @@ include('login.php');
 											}
 										if(isset($_SESSION['type'])&&$_SESSION['type']=='S'){
 											$q=mysql_query("select * from products where seller=".$_SESSION['mid']);
+											if(isset($_REQUEST['category'])){
 											if($_REQUEST['category']=="game"){
 												$q=mysql_query("select * from products where category='game' && seller=".$_SESSION['mid']);
 												}
@@ -319,6 +354,7 @@ include('login.php');
 												if($_REQUEST['category']=="Calender"){
 												$q=mysql_query("select * from products where category='Calender' && seller=".$_SESSION['mid']);
 												}
+											}
 											}
 										while($product=mysql_fetch_array($q)){
 									?>
@@ -357,6 +393,12 @@ include('login.php');
                                        			<b style="color:#F00;">Out Of Stock</b>
                                                 <?php
 												}
+											}
+											
+											if(isset($_SESSION['type'])&&$_SESSION['type']=='S'){
+											?>
+                                            <input type="text" value="<?php echo $product['quantity']?>" id="<?php echo $product["pid"]; ?>" class="quant">
+                                            <?php
 											}
 											?>
 										</form>

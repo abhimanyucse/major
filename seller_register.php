@@ -50,8 +50,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 session_start();
 if(isset($_SESSION['type'])&&$_SESSION['type']=='A'){}
 else{
-	//	header("location:index.php");
+		header("Location: index.php");
 	}
+include('connect.php');
 include('login.php');
 ?>
 	<!-- //header -->
