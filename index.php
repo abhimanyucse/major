@@ -76,11 +76,10 @@ include('login.php');
 						<!-- Mega Menu -->
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Games</a></li>
-								<li><a href="#">Books</a></li>
-								<li><a href="#">Calenders</a></li>
-								<!-- <div class="row">
+							<ul class="dropdown-menu">                            <li><a href="products.php?category=game">Games</a></li>
+								<li><a href="products.php?category=books">Books</a></li>
+								<li><a href="products.php?category=Calender">Calenders</a></li>
+<!-- <div class="row">
 									<div class="col-sm-3">
 										<ul class="multi-column-dropdown">
 											<h6>Mobiles</h6>
@@ -215,10 +214,19 @@ include('login.php');
 											<input type="hidden" name="amount" value="<?php echo $info["price"]-$info["price"]*$info["discount"]/100;?>" />   
                                             <?php
                                             if(isset($_SESSION['type'])&&$_SESSION['type']=='customer'){
+                                            if($info['quantity']>0){
 											?>
-											<button type="submit" class="w3ls-cart" id="<?php echo $info['pid'];?>">Add to cart</button>	
+
+											<button type="submit" class="w3ls-cart" id="<?php echo $info['pid'];?>">Add to cart</button>										
                                             <?php
 											}
+											
+											else{
+												?>
+												<b style="color:#F00">Out Of Stock</b>
+												<?php
+												}
+												}
 											?>
 										</form>  
 									</div>
@@ -258,12 +266,19 @@ include('login.php');
 											<input type="hidden" name="amount" value="<?php echo $info["price"]-$info["price"]*$info["discount"]/100;?>" />   
                                             <?php
                                             if(isset($_SESSION['type'])&&$_SESSION['type']=='customer'){
+											 if($info['quantity']>0){
 											?>
-											<button type="submit" class="w3ls-cart" id="<?php echo $info['pid'];?>">Add to cart</button>
+
+											<button type="submit" class="w3ls-cart" id="<?php echo $info['pid'];?>">Add to cart</button>										
                                             <?php
 											}
-											?>
-										</form>  
+											else{
+												?>
+												<b style="color:#F00">Out Of Stock</b>
+												<?php
+												}
+												}
+											?>										</form>  
 									</div>
 								</div>
                                 <?php
@@ -301,10 +316,18 @@ include('login.php');
 											<input type="hidden" name="amount" value="<?php echo $info["price"]-$info["price"]*$info["discount"]/100;?>" />   
                                             <?php
                                             if(isset($_SESSION['type'])&&$_SESSION['type']=='customer'){
+											 if($info['quantity']>0){
 											?>
-											<button type="submit"  id="<?php echo $info['pid'];?>" class="w3ls-cart">Add to cart</button>
+
+											<button type="submit" class="w3ls-cart" id="<?php echo $info['pid'];?>">Add to cart</button>										
                                             <?php
 											}
+											else{
+												?>
+												<b style="color:#F00;">Out of Stock</b>
+												<?php
+												}
+												}
 											?>
 										</form>  
 									</div>

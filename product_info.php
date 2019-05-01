@@ -76,11 +76,10 @@ $info=mysql_fetch_array($se);
 						<!-- Mega Menu -->
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle act" data-toggle="dropdown">Products <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Games</a></li>
-								<li><a href="#">Books</a></li>
-								<li><a href="#">Calenders</a></li>
-								<!-- <div class="row">
+							<ul class="dropdown-menu">                            <li><a href="products.php?category=game">Games</a></li>
+								<li><a href="products.php?category=books">Books</a></li>
+								<li><a href="products.php?category=Calender">Calenders</a></li>
+<!-- <div class="row">
 									<div class="col-sm-3">
 										<ul class="multi-column-dropdown">
 											<h6>Mobiles</h6>

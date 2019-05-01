@@ -72,11 +72,10 @@ include('login.php');
 						<!-- Mega Menu -->
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle act" data-toggle="dropdown">Products <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Games</a></li>
-								<li><a href="#">Books</a></li>
-								<li><a href="#">Calenders</a></li>
-								<!-- <div class="row">
+							<ul class="dropdown-menu">                            <li><a href="products.php?category=game">Games</a></li>
+								<li><a href="products.php?category=books">Books</a></li>
+								<li><a href="products.php?category=Calender">Calenders</a></li>
+<!-- <div class="row">
 									<div class="col-sm-3">
 										<ul class="multi-column-dropdown">
 											<h6>Mobiles</h6>
@@ -158,7 +157,27 @@ include('login.php');
 				<div class="col-md-4 w3ls_mobiles_grid_left">
 					<div class="w3ls_mobiles_grid_left_grid">
 						<h3>Search Here</h3>
-						<input type="search" placeholder="Search" class="form-control" />
+						<input type="search" placeholder="Search" id="search" class="form-control" />
+                        <script>
+						$(document).ready(function(e) {
+                            $("#search").keypress((function(e){
+								var keycode = (event.keyCode ? event.keyCode : event.which);
+								if(keycode=='13'){
+								var str=$("#search").val();
+								var data="str="+str;
+								$.ajax({
+									url: "search.php",
+									type: 'POST',
+									data:data,
+									success: function(mess){
+										$(".products_show").empty();
+										$(".products_show").html(mess);
+										}
+									});
+								}
+								}));
+                        });
+						</script>
 						<!-- <div class="w3ls_mobiles_grid_left_grid_sub">
 							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 							  <div class="panel panel-default">
@@ -240,7 +259,7 @@ include('login.php');
 						</div>
 					</div> -->
 				</div>
-				<div class="col-md-8 w3ls_mobiles_grid_right">
+				<div class="col-md-8 w3ls_mobiles_grid_right products_show">
 					<!-- <div class="col-md-6 w3ls_mobiles_grid_right_left">
 						<div class="w3ls_mobiles_grid_right_grid1">
 							<img src="images/46.jpg" alt=" " class="img-responsive" />
@@ -278,8 +297,28 @@ include('login.php');
 					<div class="w3ls_mobiles_grid_right_grid3">
 									<?php 
 										$q=mysql_query("select * from products");
+										if(isset($_REQUEST['category'])){
+											if($_REQUEST['category']=="game"){
+												$q=mysql_query("select * from products where category='game'");
+												}
+												if($_REQUEST['category']=="books"){
+												$q=mysql_query("select * from products where category='books'");
+												}
+												if($_REQUEST['category']=="Calender"){
+												$q=mysql_query("select * from products where category='Calender'");
+												}
+											}
 										if(isset($_SESSION['type'])&&$_SESSION['type']=='S'){
 											$q=mysql_query("select * from products where seller=".$_SESSION['mid']);
+											if($_REQUEST['category']=="game"){
+												$q=mysql_query("select * from products where category='game' && seller=".$_SESSION['mid']);
+												}
+												if($_REQUEST['category']=="books"){
+												$q=mysql_query("select * from products where category='books' && seller=".$_SESSION['mid']);
+												}
+												if($_REQUEST['category']=="Calender"){
+												$q=mysql_query("select * from products where category='Calender' && seller=".$_SESSION['mid']);
+												}
 											}
 										while($product=mysql_fetch_array($q)){
 									?>
@@ -313,7 +352,7 @@ include('login.php');
 											<button type="submit" class="w3ls-cart" id="<?php echo $product["pid"]; ?>">Add to cart</button>
                                             <?php
 											}
-											if($product['quantity']==0){
+											if($product['quantity']<=0){
 												?>
                                        			<b style="color:#F00;">Out Of Stock</b>
                                                 <?php
