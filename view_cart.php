@@ -199,6 +199,7 @@ foreach($_SESSION['cart'] as $key=>$value){
 ?>
 <form method="post"  action="view_cart.php">
 <input type="submit" value="Clear Cart"  name="clear_cart">
+<a href="place_order.php"><input type="button" value="Place Order"  name="Place_order"></a>
 </form>
 
 <hr />

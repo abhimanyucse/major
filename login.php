@@ -85,7 +85,8 @@ if(isset($_SESSION['mid'])){
 															 data:data,
 															 success: function(mess){
 																 if(mess=="Success"){
-																	 alert("login Successful");
+																	 //alert("login Successful");
+																	 window.location.replace("index.php");
 																	 }
 																	 else{
 																		 alert(mess);
@@ -136,7 +137,7 @@ if(!isset($_SESSION['mid'])){
 
 <?php
 }
-if(isset($_SESSION['mid'])&&$_SESSION['type']=="customer"){
+if(isset($_SESSION['mid'])&&isset($_SESSION['type'])){
 ?>
 			<div class="w3l_login">
 				<a href="profile.php" data-target="#myModal88"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
@@ -160,11 +161,12 @@ if(isset($_SESSION['mid'])&&$_SESSION['type']=="customer"){
 				</div>
 			</div>
 			<div class="cart cart box_1"> 
-				<form action="#" method="post" class="last"> 
+				<!-- <form action="#" method="post" class="last"> 
 					<input type="hidden" name="cmd" value="_cart" />
 					<input type="hidden" name="display" value="1" />
-					<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
-				</form>   
+			<button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+				</form> -->  
+                <a href="view_cart.php"><button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button></a>
 			</div>  
 		</div>
 	</div>

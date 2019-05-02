@@ -135,10 +135,16 @@ include('login.php');
     <!-- Profile Section -->
     <section>
         <?php 
-            if(isset($_SESSION["mid"]) && isset($_SESSION["type"]) == "customer"){
+            if(isset($_SESSION["mid"]) && isset($_SESSION["type"])){
                 $custId = $_SESSION["mid"];
-                $query = mysql_query("select * from customer where mid=$custId");
-                while($data=mysql_fetch_array($query)){
+				$user = $_SESSION["type"];
+				if($user == "customer")
+                	$query = mysql_query("select * from customer where mid=$custId");
+                else if($user == "S")
+					$query = mysql_query("select * from seller where mid=$custId");
+				else if($user == "A")
+					$query = mysql_query("select * from admin where mid=$custId");
+				while($data=mysql_fetch_array($query)){
                     ?>
                         <div class="container" style="padding:20px;text-align:center">
                             <h1>Profile</h1>
@@ -160,7 +166,24 @@ include('login.php');
                                                 </div>
                                                 <hr />
                                                 <div>
+                                                <?php 
+													if($user == "customer"){
+												?>
                                                     <a href="orders.php"><button class="btn btn-primary btn-block">View past orders</button></a>
+                                                    <?php 
+													}else if($user == "S" || $user == "A"){
+														?>
+                                                        <a href="add_product.php"><button class="btn btn-primary btn-block">Add Product</button></a>
+                                                        
+													<?php	
+													}
+													if ($user == "A"){
+														?><br>
+                                                        <a href="seller_register.php"><button class="btn btn-primary btn-block">Add Seller</button></a>
+                                                        <?php
+														}
+													?>
+													
                                                 </div>
                                             </div>
                                         </div>

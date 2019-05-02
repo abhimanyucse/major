@@ -47,7 +47,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 	<!-- header modal -->
 <?php
-session_start();
+//session_start();
 if(isset($_SESSION['type'])&&$_SESSION['type']=='A'){}
 else{
 		header("Location: index.php");
