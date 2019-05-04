@@ -158,6 +158,8 @@ if(isset($_POST["clear_cart"])){
 	<!-- banner -->
 	<div class="container cartMain">
 <?php
+$gstse=mysql_query("select * from gst");
+$gst=mysql_fetch_array($gstse);
 if(isset($_SESSION['cart'])){
 $total=0;
 foreach($_SESSION['cart'] as $key=>$value){
@@ -205,10 +207,26 @@ foreach($_SESSION['cart'] as $key=>$value){
 <hr />
 <div class="totalCart">
 	<div>
+		<h3>CGST(<?php echo $gst['cgst']*100;?>%):</h3>
+	</div>
+	<div>
+		<strong><h3>$ <?php echo $total*($gst['cgst']); ?></h3></strong>
+	</div>
+</div>
+<div class="totalCart">
+	<div>
+		<h3>SGST(<?php echo $gst['sgst']*100;?>%):</h3>
+	</div>
+	<div>
+		<strong><h3>$ <?php echo $total*($gst['sgst']); ?></h3></strong>
+	</div>
+</div>
+<div class="totalCart">
+	<div>
 		<h3>Total:</h3>
 	</div>
 	<div>
-		<strong><h3>$ <?php echo $total; ?></h3></strong>
+		<strong><h3>$ <?php echo $total+$total*($gst['sgst'])+$total*($gst['cgst']); ?></h3></strong>
 	</div>
 </div>
 
