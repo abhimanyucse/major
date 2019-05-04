@@ -1,21 +1,20 @@
 <?php
-session_start();
-$addr=$_POST['addr'];
-$phone=$_POST['phone'];
-$name=$_POST['name'];	
-$zip=$_POST['zip'];
-$date=date('y-m-d');
-$total=0;
-include "connect.php";
-foreach($_SESSION['cart'] as $key=>$value){
-	$pid= $_SESSION['cart'][$key]['productID'];
-	$qty= $_SESSION['cart'][$key]['Quantity'];
-	$se=mysql_query("select * from products where pid='$pid'");
-	if($se!=false){
-	$info=mysql_fetch_array($se);
-	$total+=$qty*$info['price']*(100-$info['discount'])/100;
-	?>
-		<form method="post" action="Paytm/pgRedirect.php">
+	header("Pragma: no-cache");
+	header("Cache-Control: no-cache");
+	header("Expires: 0");
+
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Merchant Check Out Page</title>
+<meta name="GENERATOR" content="Evrsoft First Page">
+</head>
+<body>
+	<h1>Merchant Check Out Page</h1>
+	<pre>
+	</pre>
+	<form method="post" action="pgRedirect.php">
 		<table border="1">
 			<tbody>
 				<tr>
@@ -28,13 +27,13 @@ foreach($_SESSION['cart'] as $key=>$value){
 					<td><label>ORDER_ID::*</label></td>
 					<td><input id="ORDER_ID" tabindex="1" maxlength="20" size="20"
 						name="ORDER_ID" autocomplete="off"
-						value="<?php echo  $orderid="ORDS" . rand(10000,99999999)?>">
+						value="<?php echo  "ORDS" . rand(10000,99999999)?>">
 					</td>
 				</tr>
 				<tr>
 					<td>2</td>
 					<td><label>CUSTID ::*</label></td>
-					<td><input id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="<?php echo $_SESSION['mid']?>"></td>
+					<td><input id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID" autocomplete="off" value="CUST001"></td>
 				</tr>
 				<tr>
 					<td>3</td>
@@ -53,7 +52,7 @@ foreach($_SESSION['cart'] as $key=>$value){
 					<td><label>txnAmount*</label></td>
 					<td><input title="TXN_AMOUNT" tabindex="10"
 						type="text" name="TXN_AMOUNT"
-						value="<?php echo $total?>">
+						value="1">
 					</td>
 				</tr>
 				<tr>
@@ -65,10 +64,5 @@ foreach($_SESSION['cart'] as $key=>$value){
 		</table>
 		* - Mandatory Fields
 	</form>
-
-	<?php
-	mysql_query("insert into transaction set mid='".$_SESSION['mid']."',pid='".$info['pid']."',quantity='".$qty."',address='".$addr."',zipcode='$zip',name='$name',phone='$phone',date='$date',orderid='".$orderid."'");
-//	header("Location: orders.php");	
-		}
-	}
-?>
+</body>
+</html>
