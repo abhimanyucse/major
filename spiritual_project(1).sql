@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2019 at 07:26 PM
+-- Generation Time: May 06, 2019 at 07:49 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -40,6 +40,26 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`mid`, `name`, `Designation`, `email`, `phone`) VALUES
 (1, 'm', 'k', 'a@.n', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `c_id` int(11) NOT NULL,
+  `category` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`c_id`, `category`) VALUES
+(1, 'games'),
+(2, 'books'),
+(3, 'calender');
 
 -- --------------------------------------------------------
 
@@ -121,7 +141,7 @@ CREATE TABLE `products` (
   `seller` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `discount` int(11) NOT NULL,
-  `category` text NOT NULL,
+  `category` int(11) NOT NULL,
   `info` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -130,17 +150,17 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`pid`, `name`, `photo`, `price`, `seller`, `quantity`, `discount`, `category`, `info`) VALUES
-(9, 'm', '9.jpg', 90, 2, -1, 90, 'game', '1'),
-(10, 'ma', '10.jpg', 90, 2, -1, 90, 'game', '2'),
-(11, 'MAc', '11.jpg', 100, 2, -406, 78, 'game', '3'),
-(12, 'mac', '12.jpg', 89, 3, 77, 78, 'books', 'kl'),
-(13, 'mac1', '13.jpg', 89, 2, 78, 78, 'books', '89'),
-(14, 'mac2', '14.png', 88, 3, 78, 78, 'books', 'gh'),
-(15, 't1', '15.jpg', 88, 3, 78, 78, 'Calender', '67'),
-(16, 't2', '16.jpg', 88, 3, 78, 78, 'Calender', '56'),
-(17, 't3', '17.jpg', 88, 26, 78, 78, 'Calender', 'gh'),
-(18, 'jk', '18.gif', 89, 26, 100, 78, 'books', 'mnmnmnmnmn'),
-(19, 'Scented Candels', '19.jpg', 100000, 26, 1000, 5, 'books', 'candel');
+(9, 'm', '9.jpg', 90, 2, -1, 90, 1, '1'),
+(10, 'ma', '10.jpg', 90, 2, -1, 90, 1, '2'),
+(11, 'MAc', '11.jpg', 100, 2, -406, 78, 1, '3'),
+(12, 'mac', '12.jpg', 89, 3, 77, 78, 2, 'kl'),
+(13, 'mac1', '13.jpg', 89, 2, 78, 78, 2, '89'),
+(14, 'mac2', '14.png', 88, 3, 78, 78, 2, 'gh'),
+(15, 't1', '15.jpg', 88, 3, 78, 78, 3, '67'),
+(16, 't2', '16.jpg', 88, 3, 78, 78, 3, '56'),
+(17, 't3', '17.jpg', 88, 26, 80, 78, 3, 'gh'),
+(18, 'jk', '18.gif', 89, 26, 100, 78, 2, 'mnmnmnmnmn'),
+(19, 'Scented Candels', '19.jpg', 100000, 26, 1000, 5, 2, 'candel');
 
 -- --------------------------------------------------------
 
@@ -207,6 +227,12 @@ ALTER TABLE `admin`
   ADD KEY `mid` (`mid`);
 
 --
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`c_id`);
+
+--
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
@@ -224,7 +250,8 @@ ALTER TABLE `master`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`pid`),
-  ADD KEY `seller` (`seller`);
+  ADD KEY `seller` (`seller`),
+  ADD KEY `category` (`category`);
 
 --
 -- Indexes for table `seller`
@@ -244,6 +271,11 @@ ALTER TABLE `transaction`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `master`
 --
@@ -279,7 +311,8 @@ ALTER TABLE `customer`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`seller`) REFERENCES `seller` (`mid`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`seller`) REFERENCES `seller` (`mid`),
+  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`category`) REFERENCES `category` (`c_id`);
 
 --
 -- Constraints for table `seller`
