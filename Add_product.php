@@ -79,10 +79,14 @@ if(isset($_SESSION['mid'])&&isset($_SESSION['type'])){
 						<!-- Mega Menu -->
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-							<ul class="dropdown-menu">                            <li><a href="products.php?category=game">Games</a></li>
-								<li><a href="products.php?category=books">Books</a></li>
-								<li><a href="products.php?category=Calender">Calenders</a></li>
-<!-- <div class="row">
+							<ul class="dropdown-menu"><?php
+                            $ca=mysql_query("select * from category");
+							while($cate=mysql_fetch_array($ca)){
+							?>
+                                <li><a href="products.php?category=<?php echo $cate['c_id']?>"><?php echo $cate['category'];?></a></li>
+                                <?php
+							}
+								?><!-- <div class="row">
 									<div class="col-sm-3">
 										<ul class="multi-column-dropdown">
 											<h6>Mobiles</h6>
@@ -171,13 +175,18 @@ if(isset($_SESSION['mid'])&&isset($_SESSION['type'])){
                          <option value="<?php echo $data['mid'];?>"><?php echo $data['organization'];?></option>
 
 <?php		
-	}					
+	}		
+	$se=mysql_query("select * from category");			
 ?>						</select> 
                         <br><br>
                          <select style="width:32.63%;" name="Category">
-                         <option value="game">Game</option>
-						 <option value="books">Books</option>
-						 <option value="Calender">Calender</option>
+                         <?php 
+						 while($cate=mysql_fetch_array($se)){
+						 ?>
+                         <option value="<?php echo $cate['c_id'];?>"><?php echo $cate['category'];?></option>
+                         <?php
+						 }
+						 ?>
                          </select>
                          <br><br>
 						<input style="width:32.63%;"  type="number" name="price" placeholder="Price" required><br>

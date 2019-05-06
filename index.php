@@ -92,10 +92,14 @@ include('login.php');
 						<!-- Mega Menu -->
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-							<ul class="dropdown-menu">                            <li><a href="products.php?category=game">Games</a></li>
-								<li><a href="products.php?category=books">Books</a></li>
-								<li><a href="products.php?category=Calender">Calenders</a></li>
-<!-- <div class="row">
+							<ul class="dropdown-menu"><?php
+                            $ca=mysql_query("select * from category");
+							while($cate=mysql_fetch_array($ca)){
+							?>
+                                <li><a href="products.php?category=<?php echo $cate['c_id']?>"><?php echo $cate['category'];?></a></li>
+                                <?php
+							}
+								?><!-- <div class="row">
 									<div class="col-sm-3">
 										<ul class="multi-column-dropdown">
 											<h6>Mobiles</h6>
@@ -194,17 +198,23 @@ include('login.php');
 					</script>
 			</div>
 			<div class="col-md-7 wthree_banner_bottom_right">
+            <?php $ca=mysql_query("select * from category limit 3");
+				$cate=mysql_fetch_array($ca);
+			?>
 				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 					<ul id="myTab" class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home">Games</a></li>
-						<li role="presentation"><a href="#audio" role="tab" id="audio-tab" data-toggle="tab" aria-controls="audio">Books</a></li>
-						<li role="presentation"><a href="#video" role="tab" id="video-tab" data-toggle="tab" aria-controls="video">Calenders</a></li>
+						<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home"><?php echo $cate['category'];?></a></li>
+						<li role="presentation"><a href="#audio" role="tab" id="audio-tab" data-toggle="tab" aria-controls="audio"><?php $cate=mysql_fetch_array($ca);echo $cate['category'];?></a></li>
+						<li role="presentation"><a href="#video" role="tab" id="video-tab" data-toggle="tab" aria-controls="video"><?php $cate=mysql_fetch_array($ca);echo $cate['category'];?></a></li>
 					</ul>
 					<div id="myTabContent" class="tab-content">
 						<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
 							<div class="agile_ecommerce_tabs">
                             <?php
-                             $se=mysql_query("select * from products where category='game' order by pid desc limit 3");
+							$ca=mysql_query("select * from category limit 3");
+							$cate=mysql_fetch_array($ca);
+							$category=$cate['c_id'];
+                             $se=mysql_query("select * from products where category='$category' order by pid desc limit 3");
 							 while($info=mysql_fetch_array($se)){		
 							?>
 								<div class="col-md-4 agile_ecommerce_tab_left">
@@ -256,7 +266,9 @@ include('login.php');
 						<div role="tabpanel" class="tab-pane fade" id="audio" aria-labelledby="audio-tab">
 							<div class="agile_ecommerce_tabs">
                             <?php
-                             $se=mysql_query("select * from products where category='books' order by pid desc limit 3");
+							$cate=mysql_fetch_array($ca);
+							$category=$cate['c_id'];
+                             $se=mysql_query("select * from products where category='$category' order by pid desc limit 3");
 							 while($info=mysql_fetch_array($se)){		
 							?>
 								<div class="col-md-4 agile_ecommerce_tab_left">
@@ -306,7 +318,10 @@ include('login.php');
 						<div role="tabpanel" class="tab-pane fade" id="video" aria-labelledby="video-tab">
 							<div class="agile_ecommerce_tabs">
 								<?php
-                             $se=mysql_query("select * from products where category='calender' order by pid desc limit 3");
+							$cate=mysql_fetch_array($ca);
+							$category=$cate['c_id'];
+							
+                             $se=mysql_query("select * from products where category='$category' order by pid desc limit 3");
 							 while($info=mysql_fetch_array($se)){		
 							?>
 								<div class="col-md-4 agile_ecommerce_tab_left">

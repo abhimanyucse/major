@@ -89,9 +89,15 @@ include('login.php');
 						<!-- Mega Menu -->
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle act" data-toggle="dropdown">Products <b class="caret"></b></a>
-							<ul class="dropdown-menu">                            <li><a href="products.php?category=game">Games</a></li>
-								<li><a href="products.php?category=books">Books</a></li>
-								<li><a href="products.php?category=Calender">Calenders</a></li>
+							<ul class="dropdown-menu"> 
+                            <?php
+                            $ca=mysql_query("select * from category");
+							while($cate=mysql_fetch_array($ca)){
+							?>
+                                <li><a href="products.php?category=<?php echo $cate['c_id']?>"><?php echo $cate['category'];?></a></li>
+                                <?php
+							}
+								?>
 <!-- <div class="row">
 									<div class="col-sm-3">
 										<ul class="multi-column-dropdown">
@@ -332,28 +338,12 @@ include('login.php');
 									<?php 
 										$q=mysql_query("select * from products");
 										if(isset($_REQUEST['category'])){
-											if($_REQUEST['category']=="game"){
-												$q=mysql_query("select * from products where category='game'");
-												}
-												if($_REQUEST['category']=="books"){
-												$q=mysql_query("select * from products where category='books'");
-												}
-												if($_REQUEST['category']=="Calender"){
-												$q=mysql_query("select * from products where category='Calender'");
-												}
+											$q=mysql_query("select * from products where category='".$_REQUEST['category']."'");
 											}
 										if(isset($_SESSION['type'])&&$_SESSION['type']=='S'){
 											$q=mysql_query("select * from products where seller=".$_SESSION['mid']);
 											if(isset($_REQUEST['category'])){
-											if($_REQUEST['category']=="game"){
-												$q=mysql_query("select * from products where category='game' && seller=".$_SESSION['mid']);
-												}
-												if($_REQUEST['category']=="books"){
-												$q=mysql_query("select * from products where category='books' && seller=".$_SESSION['mid']);
-												}
-												if($_REQUEST['category']=="Calender"){
-												$q=mysql_query("select * from products where category='Calender' && seller=".$_SESSION['mid']);
-												}
+												$q=mysql_query("select * from products where category='".$_REQUEST['category']."' && seller=".$_SESSION['mid']);
 											}
 											}
 										while($product=mysql_fetch_array($q)){

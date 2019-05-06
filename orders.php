@@ -95,10 +95,14 @@ else{
 						<!-- Mega Menu -->
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b class="caret"></b></a>
-							<ul class="dropdown-menu">                            <li><a href="products.php?category=game">Games</a></li>
-								<li><a href="products.php?category=books">Books</a></li>
-								<li><a href="products.php?category=Calender">Calenders</a></li>
-<!-- <div class="row">
+							<ul class="dropdown-menu"><?php
+                            $ca=mysql_query("select * from category");
+							while($cate=mysql_fetch_array($ca)){
+							?>
+                                <li><a href="products.php?category=<?php echo $cate['c_id']?>"><?php echo $cate['category'];?></a></li>
+                                <?php
+							}
+								?><!-- <div class="row">
 									<div class="col-sm-3">
 										<ul class="multi-column-dropdown">
 											<h6>Mobiles</h6>
